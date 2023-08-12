@@ -16,9 +16,17 @@ public class kakaoLoginController {
     @Value("${kakao-client-id}")
     private String KAKAO_CLIENT_KEY;
 
+    @Value("${google-client-id}")
+    private String GOOGLE_CLIENT_KEY;
+
+    @Value("${google-redirect-uri}")
+    private String GOOGLE_REDIRECT_URI;
+
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("apiKey", KAKAO_CLIENT_KEY);
+        model.addAttribute("google", GOOGLE_CLIENT_KEY);
+        model.addAttribute("uri", GOOGLE_REDIRECT_URI);
         return "home";
     }
 
