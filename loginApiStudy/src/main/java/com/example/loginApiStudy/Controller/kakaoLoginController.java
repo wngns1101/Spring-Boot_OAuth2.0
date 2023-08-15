@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequiredArgsConstructor
 public class kakaoLoginController {
-    private final KakaoService kakaoService;
 
     @Value("${kakao-client-id}")
     private String KAKAO_CLIENT_KEY;
@@ -30,10 +29,4 @@ public class kakaoLoginController {
         return "home";
     }
 
-    @GetMapping("/login/kakao")
-    public void kakaoCallBack(@RequestParam String code) throws Exception {
-        System.out.println(code);
-        String kakaoAccessToken = kakaoService.getKakaoAccessToken(code);
-        kakaoService.createKakaoUser(kakaoAccessToken);
-    }
 }

@@ -4,8 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GoogleService {
-    public void googleLogin(String code, String registrationId) {
+    public void googleLogin(String code) {
         System.out.println("code = " + code);
-        System.out.println("registrationId = " + registrationId);
     }
 }
