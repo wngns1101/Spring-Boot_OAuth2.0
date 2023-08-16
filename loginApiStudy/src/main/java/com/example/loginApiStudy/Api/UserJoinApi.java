@@ -15,18 +15,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserJoinApi {
 
-    private final KakaoService kakaoService;
-    private final UserRepository userRepository;
-
-
-    @GetMapping("/login/kakao")
-    public String kakaoCallBack(@RequestParam String code, Model model) throws Exception {
-        System.out.println(code);
-        String kakaoAccessToken = kakaoService.getKakaoAccessToken(code);
-        User user = kakaoService.receiveKakaoUser(kakaoAccessToken);
-
-        kakaoService.joinUser(user);
-        return "success";
-    }
-
 }
