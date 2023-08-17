@@ -11,8 +11,10 @@
     Kakao 로그인
 </a>
 
-<a href="http://localhost:8080/login/google">
-    google 로그인
+<a th:href="@{https://accounts.google.com/o/oauth2/v2/auth(client_id=${@environment.getProperty('google-client-id')}, redirect_uri=${@environment.getProperty('google-redirect-uri')}, scope='https://www.googleapis.com/auth/userinfo.profile', response_type='code')}">
+    Google 로그인
 </a>
+
+
 </body>
 </html>
