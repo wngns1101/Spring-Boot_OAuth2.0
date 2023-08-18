@@ -32,11 +32,24 @@ public class User {
     @Column(name = "userGender")
     private JoinGender userGender;
 
-    public static User createUser(String name, String email) {
+    public static User createUser(String name, String email, String joinType) {
         User user = new User();
-        user.kakaoUser = JoinType.Y;
+        user.kakaoUser = JoinType.N;
         user.googleUser = JoinType.N;
         user.regularUser = JoinType.N;
+
+        switch (joinType) {
+            case "kakao":
+                user.kakaoUser = JoinType.Y;
+                break;
+            case "google":
+                user.googleUser = JoinType.Y;
+                break;
+            case "regular":
+                user.regularUser = JoinType.Y;
+                break;
+        }
+
         user.userEmail = email;
         user.userName = name;
         return user;

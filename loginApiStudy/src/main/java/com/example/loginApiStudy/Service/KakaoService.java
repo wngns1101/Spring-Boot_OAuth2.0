@@ -1,7 +1,7 @@
 package com.example.loginApiStudy.Service;
 
 import com.example.loginApiStudy.Entity.User;
-import com.example.loginApiStudy.Repository.UserRepository;
+import com.example.loginApiStudy.Repository.KakaoRepository;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class KakaoService {
     String authorizeURL = "https://kauth.kakao.com";
     String resourceURL = "https://kapi.kakao.com";
 
-    private final UserRepository userRepository;
+    private final KakaoRepository kakaoRepository;
 
     @Value("${kakao-client-id}")
     private String KAKAO_CLIENT_KEY;
@@ -79,7 +79,7 @@ public class KakaoService {
             System.out.println("email : " + email);
             System.out.println("nickname : " + nickname);
 
-            User dto = User.createUser(nickname, email);
+            User dto = User.createUser(nickname, email, "kakao");
 
             return dto;
         } catch (Exception e) {
@@ -89,6 +89,6 @@ public class KakaoService {
 
     @Transactional
     public void joinUser(User user){
-        userRepository.join(user);
+        kakaoRepository.join(user);
     }
 }

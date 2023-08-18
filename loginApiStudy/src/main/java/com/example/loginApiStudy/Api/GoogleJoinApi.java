@@ -26,8 +26,9 @@ public class GoogleJoinApi {
 
         String accessToken = googleService.requestAccessToken(code);
         System.out.println(accessToken);
-//        User user = googleService.requestResourceToken(accessToken);
-//        googleService.join(user);
+        User user = googleService.requestResourceToken(accessToken);
+        System.out.println(user);
+        googleService.join(user);
 
 
 //        GoogleTokenRequestDto googleTokenRequestDto = GoogleTokenRequestDto.builder().clientId(GOOGLE_CLIENT_KEY).clientSecret(GOOGLE_SECRET_PW).code(code).redirectUri(GOOGLE_REDIRECT_URI).grantType("authorization_code").build();
