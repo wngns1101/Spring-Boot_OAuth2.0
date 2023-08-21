@@ -11,11 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class GoogleJoinApi {
     private final GoogleService googleService;
@@ -29,23 +30,5 @@ public class GoogleJoinApi {
         User user = googleService.requestResourceToken(accessToken);
         System.out.println(user);
         googleService.join(user);
-
-
-//        GoogleTokenRequestDto googleTokenRequestDto = GoogleTokenRequestDto.builder().clientId(GOOGLE_CLIENT_KEY).clientSecret(GOOGLE_SECRET_PW).code(code).redirectUri(GOOGLE_REDIRECT_URI).grantType("authorization_code").build();
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<GoogleLoginResponse> apiResponse = restTemplate.postForEntity("https://oauth2.googleapis.com" + "/token", googleTokenRequestDto, GoogleLoginResponse.class);
-//        GoogleLoginResponse googleLoginResponse = apiResponse.getBody();
-//
-//        WebClient webClient =
-//
-//        System.out.println(googleLoginResponse.toString());
-//
-//        String googleToken = googleLoginResponse.getId_token();
-//
-//        //5.받은 토큰을 구글에 보내 유저정보를 얻는다.
-//        String requestUrl = UriComponentsBuilder.fromHttpUrl("https://oauth2.googleapis.com" + "/tokeninfo").queryParam("id_token",googleToken).toUriString();
-//
-//        String resultJson = restTemplate.getForObject(requestUrl, String.class);
-//        System.out.println(resultJson);
     }
 }
