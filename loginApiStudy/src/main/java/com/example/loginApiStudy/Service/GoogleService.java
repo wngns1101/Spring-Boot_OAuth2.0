@@ -61,7 +61,6 @@ public class GoogleService {
     }
 
     public User requestResourceToken(String token) {
-
         WebClient webClient = WebClient.builder().baseUrl(resourceURL).defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + token).build();
         String resource = webClient.get()
                 .uri(uriBuilder -> uriBuilder
